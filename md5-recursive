@@ -1,0 +1,13 @@
+## useful for cases where different file structures exist between machines
+
+# md5 recursive on linux
+### source: https://askubuntu.com/a/907955/420815
+find . -type f -exec md5sum '{}' \; > md5sum1.txt
+
+# md5 recursive on macOS
+find . -type f -exec md5 -r '{}' \; > md5sum2.txt
+
+# compare files 
+
+
+# copy files
