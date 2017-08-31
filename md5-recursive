@@ -8,6 +8,14 @@ find . -type f -exec md5sum '{}' \; > md5sum1.txt
 find . -type f -exec md5 -r '{}' \; > md5sum2.txt
 
 # compare files 
-
+## read files into dictionary - python
+remote = {line.split()[0]: line.split()[1] for line in open("md5sum1.txt")}
+local = {line.split()[0]: line.split()[1] for line in open("md5sum2.txt")}
+## get files that are different on the remote - python
+filelist = [remote[key] for key in set(remote).difference(set(local))]
+with open("filesonremote.txt","w") as outfile:
+     for item in filelist:
+     	 outfile.write("{}\n".format(item))
 
 # copy files
+rsync -auv --progress --files-from=filesonremote.txt server:/pathtodir/ .
