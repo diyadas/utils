@@ -9,9 +9,15 @@ import os.path
 import argparse
 
 parser = argparse.ArgumentParser(description = 
-'''This script returns metadata for each sample given a BioProject ID, or a file containing the BioSample IDs. 
+'''This script returns metadata for each sample given a BioProject ID, or a file containing the BioSample IDs. \n
 If a BioProject ID is supplied, the samplefile containing the SRR, SRX, and SAMN IDs will be written to a file with the specified filename; 
-otherwise, the samplefile will be assumed to already contain this data.''')
+otherwise, the samplefile will be assumed to already contain this data. \n\n
+
+This script requires prior installation of Entrez Programming Utilities: https://www.ncbi.nlm.nih.gov/home/tools/ \n\n
+
+Python3 dependencies: pandas, subprocess, xml.etree.ElementTree, os.path, argparse 
+
+''', formatter_class=argparse.RawTextHelpFormatter)
 
 parser.add_argument('-bioproject', help="PRJNAXXXXXX; supply if no samplefile exists")
 parser.add_argument('-samplefile', help="Owner_SRR_SRX_SAMNID.txt; Run,Experiment,BioSample ID file")
