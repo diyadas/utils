@@ -18,4 +18,4 @@ with open("filesonremote.txt","w") as outfile:
      	 outfile.write("{}\n".format(item))
 
 # copy files
-rsync -auv --progress --files-from=filesonremote.txt server:/pathtodir/ .
+rsync -auvP --files-from=filesonremote.txt server:/pathtodir/ .
