@@ -25,7 +25,7 @@ parser.add_argument('-mdfile', help="Owner_MD.txt; file to save metadata to")
 
 args = parser.parse_args()
 
-if args.bioproject is None and os.path.isfile(samplefile):
+if args.bioproject is None and not os.path.isfile(samplefile):
 	raise SystemExit("You haven't supplied a BioProject ID and your samplefile does not exist. Please check your inputs.")
 
 if args.bioproject is not None:
