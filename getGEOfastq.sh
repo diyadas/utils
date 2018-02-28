@@ -19,6 +19,6 @@ for SRRID in $(tail -n+2 $1 | cut -d"," -f1 ); do
 echo $SRRID  | tee -a "$log_file"
 if [ ! -e 'fastq/'$SRRID'_1.fastq' ] | [ ! -e 'fastq/'$SRRID'_2.fastq' ]
 then
-    fastq-dump --outdir fastq/ -I --split-files $SRRID | tee -a "$log_file" && rm /global/home/users/diyadas/ncbi/public/sra/*.sra* && echo "successfully downloaded "$SRRID | tee -a "$log_file"
+    fastq-dump --outdir fastq/ -I --split-files $SRRID | tee -a "$log_file" && rm $HOME/ncbi/public/sra/*.sra* && echo "successfully downloaded "$SRRID | tee -a "$log_file"
 fi
 done
